@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Quản lý sinh viên</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Jquery theme  -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/animate.css">
+    <link rel="stylesheet" href="./CSS/modal.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/main.css">
+
+    <!-- Font Awesome JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Bootstrap <br> Sidebar</h3>
+                <strong>BS</strong>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#homeSubmenu">
+                        <i class="fa fa-home"></i>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-briefcase"></i>
+                        <span class="title">About</span>
+                    </a>
+                    <a href="#pageSubmenu">
+                        <i class="fas fa-copy"></i>
+                        <span class="title">Page</span>
+                    </a>   
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-image"></i>
+                        <span class="title">Portfolio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-question"></i>
+                        <span class="title">FAQ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-paper-plane"></i>
+                        <span class="title">Contact</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li>
+                <li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    
+                </div>
+            </nav>
+            <div class="container">
+				<div class="card text-center">
+					<!-- Header -->
+					<div class="card-header myCardHeader">
+						<div class="row">
+							<div class="col-md-6">
+								<h3 class="text-left text-primary font-weight-bold">Danh sách nhân viên</h3>
+							</div>
+							<div class="col-md-6 text-right" >
+								<button class="btn btn-primary" id="btnThem" data-toggle="modal"
+									data-target="#myModal">Thêm nhân viên</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Body -->
+					<div class="card-body">
+						<div class="row mb-3">
+							<div class="col">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Loại nhân viên" id="searchName">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="btnTimNV"><i class="fa fa-search"></i></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<table class="table table-bordered table-hover myTable">
+							<thead class="text-primary">
+								<tr>
+									<th class="nowrap">
+										<span class="mr-1">Tài khoản</span>
+										<i class="fa fa-arrow-up" id="SapXepTang"></i>
+										<i class="fa fa-arrow-down" id="SapXepGiam"></i>
+									</th>
+									<th>Họ và tên</th>
+									<th>Email</th>
+									<th>Ngày làm</th>
+									<th>Chức vụ</th>									
+									<th>Tổng lương</th>
+									<th>Xếp loại</th>
+									<th><em class="fa fa-cog"></em></th>
+								</tr>
+							</thead>
+							<tbody id="tableDanhSach">
+
+							</tbody>
+						</table>
+					</div>
+
+					<!-- Footer -->
+					<div class="card-footer myCardFooter">
+						<nav>
+							<ul class="pagination justify-content-center" id="ulPhanTrang">
+
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+
+
+            
+        </div>
+    </div>
+    <!-- The Modal -->
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<header class="head-form mb-0">
+					<h2 id="header-title">Log In</h2>
+				</header>
+
+				<!-- Modal Header -->
+				<!-- 	<div class="modal-header">
+					<h4 class="modal-title" id="modal-title">Modal Heading</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div> -->
+
+				<!-- Modal body -->
+				<div class="modal-body" id="error">
+
+					<form id="form">
+
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-user"></i></span>
+								</div>
+								<input type="text" name="tk" id="tknv" class="form-control input-sm"
+									placeholder="Tài khoản" required minlength="4" maxlength="6">
+							</div>
+
+							<span class="sp-thongbao" id="tbTKNV"></span>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-address-book"></i></span>
+								</div>
+								<input type="name" id="name" class="form-control input-sm"
+									placeholder="Họ và tên" required>
+							</div>
+							<span class="sp-thongbao" id="tbTen"></span>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group success">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-envelope"></i></span>
+								</div>
+								<input type="email" name="email" id="email" class="form-control input-sm"
+									placeholder="Email" required >
+									<!-- <i class="icon fas fa-check-circle"></i>
+									<i class="icon fa-solid fa-circle-exclamation"></i> -->
+									
+							</div>
+							<span class="sp-thongbao" id="tbEmail"></span>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-key"></i></span>
+								</div>
+								<input type="password" name="password" id="password" class="form-control input-sm"
+									placeholder="Mật khẩu" required minlength="6" maxlength="10">
+							</div>
+							<span class="sp-thongbao" id="tbMatKhau"></span>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-calendar"></i></span>
+								</div>
+								<input type="text" name="ngaylam" id="datepicker" class="form-control"
+									placeholder="Ngày làm">
+							</div>
+
+							<span class="sp-thongbao" id="tbNgay"></span>
+						</div>
+						
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa-solid fa-money-bill" aria-hidden="true"></i></span>
+								</div>
+								<input type="text" name="luongCB" id="luongCB" class="form-control input-sm"
+									placeholder="Lương cơ bản" required>
+							</div>
+							<span class="sp-thongbao" id="tbLuongCB"></span>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-briefcase"></i></span>
+								</div>
+								<select class="form-control" id="chucvu">
+									<option>Chọn chức vụ</option>
+									<option label="Giám Đốc">Giám Đốc</option>
+									<option label="Trưởng phòng">Trưởng phòng</option>
+									<option label="Nhân viên">Nhân viên</option>
+								</select>
+							</div>
+
+							<span class="sp-thongbao" id="tbChucVu"></span>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa-solid fa-clock"></i></span>
+								</div>
+								<input type="number" name="gioLam" id="gioLam" class="form-control input-sm"
+									placeholder="Giờ làm" required>
+							</div>
+							<span class="sp-thongbao" id="tbGiolam"></span>
+						</div>
+
+					</form>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer" id="modal-footer">
+					<button id="btnThemNV btnCreate" onclick="createAccount()"  type="button" class="btn btn-success">Thêm người dùng</button>
+					<button id="btnCapNhat" type="button" class="btn btn-success">Cập nhật</button>
+					<button id="btnDong" type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Popper.JS -->
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+	
+    <!-- Datepicker  -->
+    <script src="./js/datepicker.js"></script>
+    <script src="./js/jquery.ui.js"></script>
+    
+    <!-- My JS  -->
+	<script src="./js/info.js"></script>
+	<script src="./js/onclick.js"></script>
+    
+	
+    
+</body>
+
+</html>
