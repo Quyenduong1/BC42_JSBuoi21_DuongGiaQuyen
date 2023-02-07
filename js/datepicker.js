@@ -2,7 +2,7 @@
 $( function() {
     $( "#datepicker" ).datepicker({
         showOn: "button",
-        buttonImage: "./image/calendar-icon.png",
+        buttonImage: "./img/calendar-icon.png",
         buttonImageOnly: true,
         buttonText: "Select date",
         dateFormat: "mm/dd/yy"
