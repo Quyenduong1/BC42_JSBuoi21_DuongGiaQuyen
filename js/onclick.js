@@ -308,7 +308,6 @@ function getStaffList() {
 
     // Chuyển JSON thành array
     const staffList = JSON.parse(json);
-    debugger
     for (let i = 0; i < staffList.length; i++) {
         const staff = staffList[i];
         staffList[i] = new CreateObjectStaff(
