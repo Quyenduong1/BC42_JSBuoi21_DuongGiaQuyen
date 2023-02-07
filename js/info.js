@@ -1,41 +1,34 @@
-function buttonAddInfo(account, name, email, password, datepicker, Cash, Career, TimeWork) {
-    this.account = account;
+function CreateObjectStaff(accountNV, name, email, password, date, luongCB, career ,time) {
+    this.account = accountNV;
     this.name = name;
     this.email = email;
     this.password = password;
-    this.datepicker = datepicker;
-    this.Cash = Cash;
-    this.Career = Career;
-    this.TimeWork = TimeWork;
+    this.date = date;
+    this.luongCB = luongCB;
+    this.career = career;
+    this.time = time;
 };
 
 let total;
-buttonAddInfo.prototype.CalcCash = function () {
-    if (this.Career === "Giám Đốc") {
-        total = this.Cash * 3;
-        console.log(total);
-    } else if (this.Career === "Trưởng phòng") {
-        total = this.Cash * 2;
-    } else if (this.Career == "Nhân viên"){
-        total = this.Cash * 1;
+CreateObjectStaff.prototype.totalCash = function () {
+    if (this.career === "Giám Đốc") {
+        total = (this.luongCB * 3);
+    } else if (this.career === "Trưởng phòng") {
+        total = (this.luongCB * 2);
+    } else {
+        total = this.luongCB;
     }
     return total;
-}
+};
 
-let rank;
-buttonAddInfo.prototype.CalcRank = function () {    
-    if (this.Career == "Nhân viên" && this.TimeWork  >= 192){
-        rank = "Xuất sắc";
-    } else if (this.Career == "Nhân viên" && this.TimeWork >= 176 && this.TimeWork < 192){
-        rank = "Giỏi";
-    } else if (this.Career == "Nhân viên" && this.TimeWork >= 160 && this.TimeWork < 176) {
-        rank = "Khá"
-    } else if (this.Career == "Nhân viên" && this.TimeWork < 160) {
-        rank = "Trung Bình";
+CreateObjectStaff.prototype.Rank = function () {
+    if (this.time >= 192) {
+        return "Xuất sắc"
+    } else if (this.time >= 176) {
+        return "Giỏi"
+    } else if (this.time >= 160) {
+        return "Khá"
     } else {
-        rank = " ";
+        return "Trung bình"
     }
-    return rank;
-}
-
-
+};
